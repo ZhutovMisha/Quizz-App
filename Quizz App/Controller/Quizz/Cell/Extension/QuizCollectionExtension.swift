@@ -19,10 +19,25 @@ extension QuizzViewController : UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = String(describing: QuizzCollectionViewCell.self)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? QuizzCollectionViewCell else { return UICollectionViewCell() }
+        let item = questions?[indexPath.row]
         
+        cell.setQuestions = item
+        cell.optionA.layer.cornerRadius = 5
+        cell.optionB.layer.cornerRadius = 5
+        cell.optionC.layer.cornerRadius = 5
+        cell.optionD.layer.cornerRadius = 5
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width , height: collectionView.frame.height )
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0 
+    }
     
 }

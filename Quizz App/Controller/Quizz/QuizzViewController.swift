@@ -9,6 +9,7 @@ import UIKit
 
 class QuizzViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var exitButton: UIButton!{
         didSet{
             //
@@ -19,11 +20,17 @@ class QuizzViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        
+        
+        
         
         viewModel.getAllTheQuestion { [weak self ] in
             self?.questions = self?.viewModel.questionModel?.data?.questions
             DispatchQueue.main.async {
-                //                self?.tableView.reloadData()
+                self?.collectionView.delegate = self
+                self?.collectionView.dataSource = self
+                                self?.collectionView.reloadData()
             }
             // Do any additional setup after loading the view.
         }

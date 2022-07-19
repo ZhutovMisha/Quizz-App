@@ -235,10 +235,10 @@
                                     <action selector="exitButtonPressed:" destination="M8e-Rc-lfQ" eventType="touchUpInside" id="75i-bs-ZPj"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0yk-hk-h2z">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0yk-hk-h2z">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z9S-0D-YJ3">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z9S-0D-YJ3">
                                     <size key="itemSize" width="414" height="720"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -246,7 +246,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuizzCollectionViewCell" id="go2-KD-uPG" customClass="QuizzCollectionViewCell" customModule="Quizz_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                                        <rect key="frame" x="0.0" y="-1" width="414" height="720"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bob-qt-edQ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
@@ -264,7 +264,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="npf-Z6-BDq">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="179.5"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlw-4S-Vko">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlw-4S-Vko" customClass="UIControl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="179.5" height="179.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSa-VI-oSd">
@@ -282,8 +282,11 @@
                                                                         <constraint firstAttribute="width" secondItem="Hlw-4S-Vko" secondAttribute="height" multiplier="1:1" id="ukf-ju-AYq"/>
                                                                         <constraint firstAttribute="bottom" secondItem="wSa-VI-oSd" secondAttribute="bottom" constant="20" id="x3H-gu-xQM"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="pressedOptionA:" destination="go2-KD-uPG" eventType="valueChanged" id="EMk-Ue-F98"/>
+                                                                    </connections>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0W-cJ-fYh">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0W-cJ-fYh" customClass="UIControl">
                                                                     <rect key="frame" x="194.5" y="0.0" width="179.5" height="179.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40n-Ld-gFw">
@@ -300,13 +303,16 @@
                                                                         <constraint firstItem="40n-Ld-gFw" firstAttribute="leading" secondItem="T0W-cJ-fYh" secondAttribute="leading" constant="20" id="JmJ-mA-ZHP"/>
                                                                         <constraint firstItem="40n-Ld-gFw" firstAttribute="top" secondItem="T0W-cJ-fYh" secondAttribute="top" constant="20" id="awq-FZ-6bd"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="pressedOptionB:" destination="go2-KD-uPG" eventType="valueChanged" id="j5u-Zw-goh"/>
+                                                                    </connections>
                                                                 </view>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Qot-lT-JCN">
                                                             <rect key="frame" x="0.0" y="209.5" width="374" height="179.5"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czm-8O-wXJ">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czm-8O-wXJ" customClass="UIControl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="179.5" height="179.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phn-5J-xJm">
@@ -324,8 +330,11 @@
                                                                         <constraint firstItem="Phn-5J-xJm" firstAttribute="top" secondItem="czm-8O-wXJ" secondAttribute="top" constant="20" id="khI-xn-NWN"/>
                                                                         <constraint firstAttribute="width" secondItem="czm-8O-wXJ" secondAttribute="height" multiplier="1:1" id="mvN-eC-eJX"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="pressedOptionC:" destination="go2-KD-uPG" eventType="valueChanged" id="vas-a4-1rk"/>
+                                                                    </connections>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqZ-6j-JJe">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqZ-6j-JJe" customClass="UIControl">
                                                                     <rect key="frame" x="194.5" y="0.0" width="179.5" height="179.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaj-dt-ZmC">
@@ -342,6 +351,9 @@
                                                                         <constraint firstAttribute="trailing" secondItem="aaj-dt-ZmC" secondAttribute="trailing" constant="20" id="nPR-u8-9Dh"/>
                                                                         <constraint firstAttribute="bottom" secondItem="aaj-dt-ZmC" secondAttribute="bottom" constant="20" id="tZj-a8-uT1"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="pressedOptionD:" destination="go2-KD-uPG" eventType="valueChanged" id="P7H-ho-CpJ"/>
+                                                                    </connections>
                                                                 </view>
                                                             </subviews>
                                                         </stackView>
@@ -360,6 +372,10 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="720"/>
                                         <connections>
+                                            <outlet property="optionA" destination="Hlw-4S-Vko" id="KvH-F4-74N"/>
+                                            <outlet property="optionB" destination="T0W-cJ-fYh" id="izv-ym-PAb"/>
+                                            <outlet property="optionC" destination="czm-8O-wXJ" id="Khz-hd-pKQ"/>
+                                            <outlet property="optionD" destination="tqZ-6j-JJe" id="KWp-eJ-7Ea"/>
                                             <outlet property="optionFourLbl" destination="aaj-dt-ZmC" id="BbZ-wN-3De"/>
                                             <outlet property="optionOneLbl" destination="wSa-VI-oSd" id="7Kb-1m-tRv"/>
                                             <outlet property="optionThreeLbl" destination="Phn-5J-xJm" id="fnT-ww-yyY"/>
@@ -388,6 +404,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="0yk-hk-h2z" id="2c7-k8-SXz"/>
                         <outlet property="exitButton" destination="vVu-tE-Tmy" id="cex-Fn-tg5"/>
                     </connections>
                 </viewController>
