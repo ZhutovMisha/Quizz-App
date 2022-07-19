@@ -26,9 +26,17 @@ extension QuizzViewController : UICollectionViewDelegate, UICollectionViewDataSo
         cell.optionB.layer.cornerRadius = 5
         cell.optionC.layer.cornerRadius = 5
         cell.optionD.layer.cornerRadius = 5
+        self.answerSelected = true
+                cell.selectedOption = { [weak self] isCorrect in
+                    self?.answerSelected = true
+                    self?.isCorrectAnswer = isCorrect
+                }
+                return cell
+            
+        
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width , height: collectionView.frame.height )
     }
@@ -40,4 +48,5 @@ extension QuizzViewController : UICollectionViewDelegate, UICollectionViewDataSo
         return 0 
     }
     
+
 }

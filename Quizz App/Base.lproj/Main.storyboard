@@ -494,6 +494,9 @@
                                 <buttonConfiguration key="configuration" style="tinted" image="homekit" catalog="system" title="Go Back Home">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="backHomeBtnPressed:" destination="hoB-MO-Kgh" eventType="touchUpInside" id="0K6-Za-Bjl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eck-Fy-3hf"/>
@@ -523,6 +526,9 @@
                             <constraint firstItem="eck-Fy-3hf" firstAttribute="trailing" secondItem="fgl-vc-Mzx" secondAttribute="trailing" constant="40" id="x8I-wh-b8O"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resultLbl" destination="fgl-vc-Mzx" id="V2E-M5-l8u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPj-lv-LF5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

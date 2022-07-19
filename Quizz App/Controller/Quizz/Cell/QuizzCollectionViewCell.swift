@@ -18,7 +18,6 @@ case optionD
 class QuizzCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var questionLbl: UILabel!
-    
     @IBOutlet weak var optionOneLbl: UILabel!
     @IBOutlet weak var optionTwoLbl: UILabel!
     
@@ -28,6 +27,13 @@ class QuizzCollectionViewCell: UICollectionViewCell {
     
     private var correctAnswer: String?
 
+    override func prepareForReuse() {
+        updateBorder(myView: optionA)
+        updateBorder(myView: optionB)
+        updateBorder(myView: optionC)
+        updateBorder(myView: optionD)
+
+    }
     
     var setQuestions : Questions?{
         didSet{
@@ -51,25 +57,47 @@ class QuizzCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var optionD: UIControl!
     
-    
-
-    @IBAction func pressedOptionA(_ sender: Any) {
-        changeBorder(selectedOption: .optionA)
-
+    var selectedOption: ((_ selectedAnswer: Bool) -> Void)?
         
-    }
-    @IBAction func pressedOptionB(_ sender: Any) {
-        changeBorder(selectedOption: .optionB)
-    }
-    @IBAction func pressedOptionC(_ sender: Any) {
-        changeBorder(selectedOption: .optionC)
-
-    }
-    @IBAction func pressedOptionD(_ sender: Any) {
-        changeBorder(selectedOption: .optionD)
-
-    }
-    
+        @IBAction func pressedOptionA(_ sender: Any) {
+            var isCorrect = false
+            
+            if correctAnswer == setQuestions?.option_1 {
+                isCorrect = true
+            }
+            selectedOption?(isCorrect)
+            changeBorder(selectedOption: .optionA)
+        }
+        
+        @IBAction func pressedOptionB(_ sender: Any) {
+            var isCorrect = false
+            
+            if correctAnswer == setQuestions?.option_2 {
+                isCorrect = true
+            }
+            selectedOption?(isCorrect)
+            changeBorder(selectedOption: .optionB)
+        }
+        
+        @IBAction func pressedOptionC(_ sender: Any) {
+            var isCorrect = false
+            
+            if correctAnswer == setQuestions?.option_3 {
+                isCorrect = true
+            }
+            selectedOption?(isCorrect)
+            changeBorder(selectedOption: .optionC)
+        }
+        
+        @IBAction func pressedOptionD(_ sender: Any) {
+            var isCorrect = false
+            
+            if correctAnswer == setQuestions?.option_4 {
+                isCorrect = true
+            }
+            selectedOption?(isCorrect)
+            changeBorder(selectedOption: .optionD)
+        }
     func changeBorder(selectedOption: selectedOption) {
             switch selectedOption {
             case .optionA:
@@ -99,4 +127,5 @@ class QuizzCollectionViewCell: UICollectionViewCell {
             myView.layer.borderWidth = borderWidth
             myView.layer.borderColor = UIColor.white.cgColor
         }
+    
     }
